@@ -1,15 +1,17 @@
 import React, {useCallback, useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+
 import classes from './SearchLocation.module.scss';
 import {Fade, InputAdornment, Paper, Popper, TextField} from "@mui/material";
-import {useDispatch, useSelector} from "react-redux";
-import {selectIsSearchLoading, selectSearchResults} from "../../../../store/search/selectors";
+import SearchIcon from '@mui/icons-material/Search';
+
 import {fetchSearch} from "../../../../store/search/thunks";
+import {setSearchInfoSuccess} from "../../../../store/search/action";
+import {selectSearchResults} from "../../../../store/search/selectors";
 import {selectFavoriteCities} from "../../../../store/profile/selectors";
 import useDebounce from "../../../../hooks/useDebounce";
-import {fetchWeather} from "../../../../store/weather/thunks";
-import {setSearchInfoSuccess} from "../../../../store/search/action";
-import {useNavigate} from "react-router-dom";
-import SearchIcon from '@mui/icons-material/Search';
+
 import {useTranslation} from "react-i18next";
 
 
@@ -27,10 +29,10 @@ const styles = {
 }
 
 const SearchLocation = () => {
-    const [anchorEl, setAnchorEl] = React.useState(null); //DropDown states
-    const [open, setOpen] = React.useState(false); //DropDown states
+    const [anchorEl, setAnchorEl] = useState(null); //DropDown states
+    const [open, setOpen] = useState(false); //DropDown states
 
-    const [inputValue, setInputValue] = React.useState("");
+    const [inputValue, setInputValue] = useState("");
 
     const searchResult = useSelector(selectSearchResults);
     const favoriteCities = useSelector(selectFavoriteCities); // Will render if the searchResult is empty
@@ -47,19 +49,18 @@ const SearchLocation = () => {
             }
         }, [debouncedSearchTerm]); // Only call effect if debounced search term changes
 
-    const onInputFocused = (event) => {
+    const onInputFocused = useCallback((event) => {
         setAnchorEl(event.currentTarget);
         setOpen(true);
         dispatch(setSearchInfoSuccess([]));
-    };
+    } , []);
     const onInputBlurred = useCallback(() => {
         setOpen(false);
         setInputValue("");
     }, [])
-    const onAnotherLocationClicked = (value) => {
+    const onAnotherLocationClicked = useCallback((value) => {
         navigate(`../${value}`, { replace: true });
-        // dispatch(fetchWeather(value));
-    }
+    } , [])
 
     return (
         <div className={classes.SearchLocation}>

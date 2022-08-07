@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {FormControlLabel, styled, Switch, useTheme} from "@mui/material";
+import React from 'react';
+import {styled, Switch} from "@mui/material";
 
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({

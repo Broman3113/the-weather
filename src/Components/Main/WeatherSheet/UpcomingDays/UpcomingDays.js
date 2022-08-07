@@ -1,18 +1,22 @@
-import React, {useMemo} from 'react';
+import React, {useCallback, useMemo} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {useParams} from "react-router-dom";
 import classes from './UpcomingDays.module.scss'
 import {useTheme} from "@mui/material";
 import GlassyBox from "../../../../Containers/GlassyBox/GlassyBox";
-import {useDispatch, useSelector} from "react-redux";
 import {
-    selectIsWeatherHistoryInfoError, selectIsWeatherHistoryInfoLoading,
+    selectIsWeatherHistoryInfoError,
+    selectIsWeatherHistoryInfoLoading,
     selectIsWeatherInfoError,
-    selectIsWeatherInfoLoading, selectWeatherDayToDisplay, selectWeatherHistoryInfo,
+    selectIsWeatherInfoLoading,
+    selectWeatherDayToDisplay,
+    selectWeatherHistoryInfo,
     selectWeatherInfo
 } from "../../../../store/weather/selectors";
-import dayjs from "dayjs";
 import {selectIsMetric} from "../../../../store/profile/selectors";
-import {useNavigate, useParams} from "react-router-dom";
 import {setWeatherDayToDisplay} from "../../../../store/weather/actions";
+
+import dayjs from "dayjs";
 import {useTranslation} from "react-i18next";
 
 
@@ -24,7 +28,6 @@ const UpcomingDays = () => {
     const isMetric = useSelector(selectIsMetric);
     const weatherHistoryInfo = useSelector(selectWeatherHistoryInfo);
     const theme = useTheme();
-    const navigate = useNavigate();
     const weatherDayToDisplay = useSelector(selectWeatherDayToDisplay);
     const dispatch = useDispatch();
     const {date} = useParams();
@@ -42,9 +45,9 @@ const UpcomingDays = () => {
             </div>
         )
     }
-    const onDayClicked = (day, index) => {
+    const onDayClicked = useCallback((day, index) => {
         dispatch(setWeatherDayToDisplay(index));
-    }
+    } , []);
     return (
         <div className={[classes.UpcomingDays, classes[theme.palette.mode]].join(' ')}>
             <GlassyBox className={classes.GlassyBox}>

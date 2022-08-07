@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import classes from './WeatherSheet.module.scss'
 import star from '../../../images/star.svg'
 import {useTheme} from "@mui/material";
@@ -16,10 +16,10 @@ const WeatherSheet = () => {
     const {location} = useParams();
     const dispatch = useDispatch();
 
-    const onRemoveFromFavorites = (e) => {
+    const onRemoveFromFavorites = useCallback((e) => {
         e.preventDefault();
         dispatch(removeFromFavorites(location));
-    }
+    } , [location]);
 
     return (
         <div className={[classes.WeatherSheet, classes[theme.palette.mode]].join(' ')}>

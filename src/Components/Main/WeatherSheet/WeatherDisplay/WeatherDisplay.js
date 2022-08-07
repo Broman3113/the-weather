@@ -1,7 +1,10 @@
-import React, {useEffect, useMemo} from 'react';
-import classes from './WeatherDisplay.module.scss'
-import {useDispatch, useSelector} from "react-redux";
+import React, {useMemo} from 'react';
+import {useSelector} from "react-redux";
+import {useParams} from "react-router-dom";
 
+import classes from './WeatherDisplay.module.scss'
+
+import GlassyBox from "../../../../Containers/GlassyBox/GlassyBox";
 import {useTheme} from "@mui/material";
 
 import "swiper/css";
@@ -10,7 +13,6 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Mousewheel} from "swiper";
 
 import dayjs from "dayjs";
-import GlassyBox from "../../../../Containers/GlassyBox/GlassyBox";
 import {
     selectIsWeatherInfoLoading,
     selectWeatherDayToDisplay,
@@ -20,8 +22,6 @@ import {
     selectWeatherInfo
 } from "../../../../store/weather/selectors";
 import {selectIsMetric} from "../../../../store/profile/selectors";
-import {useParams} from "react-router-dom";
-import {setWeatherDayToDisplay} from "../../../../store/weather/actions";
 
 const WeatherDisplay = () => {
     const weatherInfo = useSelector(selectWeatherInfo);
@@ -40,7 +40,9 @@ const WeatherDisplay = () => {
     ], [weatherDayToDisplay, weatherInfo]);
 
 
-
+    if  (isWeatherInfoLoading) {
+        return <div className={classes.WeatherDisplay}>Loading...</div>
+    }
     if (date) {
         return (
             <div className={[classes.WeatherDisplay, classes[theme.palette.mode]].join(' ')}>

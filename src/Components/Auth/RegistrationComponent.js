@@ -4,13 +4,12 @@ import { useNavigate } from "react-router-dom";
 import {addUserAction} from "../../store/users/actions";
 import useModal from "../../hooks/useModal";
 
-import {IconButton, Modal, TextField, useTheme} from "@mui/material";
+import {Modal, TextField, useTheme} from "@mui/material";
 import GlassyBox from "../../Containers/GlassyBox/GlassyBox";
 import Button from "../../Containers/Button/Button";
 
 import classes from "./auth.module.scss";
 import {useInput} from "../../hooks/validationHooks/useInput";
-import {ColorModeContext} from "../../App";
 
 const styles = {
     TextField: {
@@ -20,16 +19,8 @@ const styles = {
     }
 }
 
-
-function Brightness7Icon() {
-    return null;
-}
-
-function Brightness4Icon() {
-    return null;
-}
-
 const RegistrationComponent = (props) => {
+    // Custom hooks for validation of input fields
     const email = useInput("", {isEmpty: true, minLength: 3, maxLength: 50, isEmail: true});
     const phone = useInput("", {isEmpty: true, minLength: 7, maxLength: 13, isPhone: true});
     const name = useInput("", {isEmpty: true, minLength: 3, maxLength: 50});
@@ -37,11 +28,10 @@ const RegistrationComponent = (props) => {
     const password = useInput("", {isEmpty: true, minLength: 7, maxLength: 20});
 
     const theme = useTheme();
-    const colorMode = React.useContext(ColorModeContext);
 
+    const [code, setCode] = useState(""); // Code for verification
 
-    const [code, setCode] = useState("");
-
+    // Elements of modal window to dynamically update information
     const [modalModalMessage, setModalModalMessage] = useState(<h2>All Good</h2>);
     const [codeModalMessage, setCodeModalModalMessage] = useState(null);
 
@@ -52,16 +42,16 @@ const RegistrationComponent = (props) => {
     const navigate = useNavigate();
 
 
-    const onAuthLinkClicked = (e) => {
+    const onAuthLinkClicked = (e) => useCallback(() => {
         e.preventDefault();
         props.setSearchParams({authType: 'login'});
-    }
+    }, [props])
 
-    const onSubmitClicked = () => {
+    const onSubmitClicked =() => {
         codeModal.toggle();
     }
 
-    const onCodeConfirmed = (inputCode) => {
+    const onCodeConfirmed = useCallback((inputCode) => {
         if (inputCode === '1234') {
             dispatch(addUserAction({
                 email: email.value,
@@ -79,7 +69,7 @@ const RegistrationComponent = (props) => {
         } else {
             setCodeModalModalMessage(<p>Wrong code, try again</p>)
         }
-    }
+    } , [dispatch, navigate, codeModal, messageModal, setCodeModalModalMessage, setModalModalMessage])
 
     return (
         <>

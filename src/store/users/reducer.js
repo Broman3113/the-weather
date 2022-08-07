@@ -1,4 +1,4 @@
-import {ADD_USER_ACTION, SET_USERS, SET_USERS_ACTION} from "./actions";
+import {ADD_USER_ACTION, SET_USERS_ACTION} from "./actions";
 
 const initialState = {
     users: [
