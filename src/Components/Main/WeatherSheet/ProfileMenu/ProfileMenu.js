@@ -80,8 +80,8 @@ const ProfileMenu = () => {
             {isShowing ? <GlassyBox className={classes.GlassyBox}>
                 <div className={classes.ProfileInfo}>
                     <div className={classes.FullName}>
-                        <span>Andrey</span>
-                        <span>Borbot</span>
+                        <span>{JSON.parse(localStorage.profile).user.name}</span>
+                        <span>{JSON.parse(localStorage.profile).user.surname}</span>
                     </div>
                     <Switcher onChange={colorMode.toggleColorMode} checked={theme.palette.mode === "dark"}/>
                 </div>
