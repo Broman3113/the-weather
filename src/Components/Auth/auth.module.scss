@@ -1,0 +1,59 @@
+@use "../../styles/colors" as *;
+
+.AuthPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  color: #fff;
+
+  a {
+    color: #00C8F3;
+    text-decoration: none;
+  }
+}
+
+p {
+  font-size: 20px;
+  margin: 5px 0 0;
+}
+
+.GlassyBox {
+  width: 950px;
+  min-height: 600px;
+  padding: 118px 0 68px;
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: 56px;
+  font-weight: 400;
+}
+
+.formWrapper {
+  margin: 50px 0;
+}
+
+.inputWrapper {
+  margin-bottom: 5px;
+}
+
+.GlassyBoxModal {
+  text-align: center;
+  width: 100%;
+  max-width: 50%;
+  padding: 10px 50px 40px;
+  min-width: 300px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.light {
+  color: $dark;
+}
+
+.dark {
+  color: $light;
+}

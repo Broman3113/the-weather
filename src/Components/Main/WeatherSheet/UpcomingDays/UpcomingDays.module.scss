@@ -1,0 +1,54 @@
+@use "../../../../styles/colors" as *;
+
+.UpcomingDays{
+  grid-area: upcomingDays;
+  p{
+    font-size: 24px;
+  }
+  span{
+    font-size: 20px;
+  }
+  .GlassyBox{
+    display: flex;
+    justify-content: space-around;
+    overflow: hidden;
+    .WeatherDay{
+      padding: 25px 20px;
+        border-radius: 10px;
+      &:hover{
+        background-color: rgba(255,255,255,0.2);
+        transition: background-color 0.5s ease-in-out;
+        cursor: pointer;
+      }
+      .Date{
+
+      }
+      .WeatherIcon{
+        img{
+          width: 60px;
+          height: 60px;
+          opacity: 0.9;
+        }
+
+        margin: 10px 0;
+      }
+      .AverageTemperature{
+        width: 90px;
+        display: flex;
+        justify-content: space-between;
+        &>div{
+        }
+      }
+    }
+  }
+}
+
+.light {
+  color: $dark;
+  transition: color .2s ease;
+}
+
+.dark {
+  color: $light;
+  transition: color .2s ease;
+}

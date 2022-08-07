@@ -1,0 +1,25 @@
+.XButton {
+
+  background-color: transparent;
+  outline: none;
+  border: none;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.XButton:hover {
+  opacity: 1;
+}
+.XButton:before, .XButton:after {
+  content: ' ';
+  position: absolute;
+  top: 2px;
+  height: 20px;
+  width: 2px;
+  background-color: #ffffff;
+}
+.XButton:before {
+  transform: rotate(45deg);
+}
+.XButton:after {
+  transform: rotate(-45deg);
+}

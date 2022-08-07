@@ -1,0 +1,106 @@
+@use "../../../../styles/colors" as *;
+
+.ProfileMenu {
+  position: relative;
+  grid-area: profile;
+  text-align: left;
+
+
+
+  .GlassyBox {
+    position: absolute;
+    padding: 20px 40px;
+    left: 70px;
+    top: 0;
+    width: 78%;
+    button {
+      transition: all 0.2s ease;
+      &:hover{
+        color: $primary;
+      }
+    }
+    hr{
+      transition: all .2s ease;
+    }
+    .ProfileInfo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .FullName {
+        span {
+          margin-right: 5px;
+          font-size: 24px;
+          transition: color .2s ease;
+        }
+      }
+    }
+    button.FavoriteButton{
+      font-size: 20px;
+      border: none;
+      background-color: transparent;
+      padding: 0;
+      display: inline-block;
+      margin: 30px 0 17px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color .2s ease;
+    }
+    button.Logout {
+      font-size: 20px;
+      display: block;
+      margin: 30px 0 17px;
+      float: right;
+      cursor: pointer;
+      text-align: right;
+      text-decoration: none;
+      border: none;
+      background-color: transparent;
+      transition: color .2s ease;
+    }
+
+    .ProfileSettingSwitcher {
+      transition: color .2s ease;
+      margin-bottom: 17px;
+      display: flex;
+      p{
+        margin: 0;
+      }
+      button {
+        background-color: transparent;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        transition: color .2s ease;
+        &:disabled{
+          color: $dark-secondary;
+        }
+      }
+    }
+    .DatePicker{
+      margin-top: 30px;
+    }
+  }
+}
+
+.light {
+  color: $dark;
+  hr {
+    border-color: $dark;
+  }
+
+  button.FavoriteButton, button.Logout{
+      color: $dark;
+  }
+}
+
+.dark {
+  color: $light;
+  button{
+    color: $light;
+  }
+  hr {
+    border-color: $light;
+  }
+
+}

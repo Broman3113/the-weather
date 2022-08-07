@@ -1,0 +1,54 @@
+{
+  "ProfileMenu": {
+    "RemoveFromFavorites": "Remove from favorites",
+    "AddToFavorites": "Add to favorites",
+    "System": "System",
+    "Metric": "metric",
+    "Imperial": "imperial",
+    "Language": "Language",
+    "PickADate": "Pick a date",
+    "Logout": "Logout"
+  },
+  "UpcomingDays": {
+    "Min": "min",
+    "Max": "max"
+  },
+  "WeatherDetails": {
+    "SavedLocations": "Saved locations",
+    "NoFavoriteCitiesYet": "No favorite cities yet",
+    "WeatherDetails": "Weather details",
+    "MaxWind": "Max wind",
+    "TotalPrecipitation": "Total precipitation",
+    "AverageHumidity": "Average humidity",
+    "AverageVisibility": "Average visibility",
+    "MinTemperature": "Min temperature",
+    "MaxTemperature": "Max temperature",
+    "SportEvents": "Sport Events",
+    "Wind": "Wind",
+    "Precipitation": "Precipitation",
+    "Humidity": "Humidity",
+    "Visibility": "Visibility",
+    "WindDirection": "Wind direction",
+    "Pressure": "Pressure",
+    "Ultraviolet": "Ultraviolet",
+    "FeelsLike": "Feels like"
+  },
+  "SearchLocation": {
+    "AnotherLocation": "Another location",
+    "SavedLocation": "Saved location",
+    "NoResults": "No results"
+  },
+  "SportEvents": {
+    "SportEvents": "Sport Events",
+    "Football": "Football",
+    "Cricket": "Cricket",
+    "Golf": "Golf",
+    "Country": "Country",
+    "Tournament": "Tournament",
+    "Match": "Match",
+    "Stadium": "Stadium",
+    "Start": "Start",
+    "AddToFavorite": "Add to favorite",
+    "SavedEvents": "Saved events"
+  }
+}

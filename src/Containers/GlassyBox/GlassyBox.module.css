@@ -1,0 +1,7 @@
+.GlassyBox {
+    background: rgba(0, 98, 98, 0.1);
+    backdrop-filter: blur( 15px );
+    -webkit-backdrop-filter: blur( 15px );
+    outline: 1px solid rgba(231, 206, 74, 0.05);
+    border-radius: 10px;
+}

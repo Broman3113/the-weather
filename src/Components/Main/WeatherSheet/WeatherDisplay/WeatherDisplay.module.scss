@@ -1,0 +1,68 @@
+.WeatherDisplay{
+  grid-area: weatherDisplay;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  &UpperInfo{
+    padding-left: 11%;
+    display: flex;
+    justify-content: flex-start;
+    .WeatherTemperature{
+      span{
+        font-size: 172px;
+        line-height: 0.9em;
+      }
+    }
+    .WeatherCityInfo{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      &City{
+        p{
+          font-size: 84px;
+        }
+      }
+      &Date{
+        font-size: 25px;
+      }
+    }
+    .WeatherType{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin: 0 0 0 50px;
+      &Image{
+        img{
+          width: 80px;
+        }
+      }
+      &Title{
+        font-size: 25px;
+      }
+    }
+  }
+
+  &Hourly{
+    margin: 50px 0 0 11%;
+    .GlassyBox{
+      display: flex;
+      width: 79%;
+      overflow-x: auto;
+      .HourlyItem{
+        padding: 25px 0;
+        .WeatherTime{
+          font-size: 24px;
+        }
+        .HourlyWeatherIcon{
+          margin: 16px 0;
+          img{
+            width: 70px;
+          }
+        }
+        .HourlyWeatherTemperature{
+            font-size: 40px;
+        }
+      }
+    }
+  }
+}

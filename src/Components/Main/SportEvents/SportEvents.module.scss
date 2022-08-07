@@ -1,0 +1,141 @@
+@use "../../../styles/colors" as *;
+
+.SportEventsCloseBtn{
+  position: absolute;
+  right: 40px;
+  top: 40px;
+}
+
+.SportEvents {
+  text-align: left;
+  overflow-y: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  max-width: 382px;
+
+  &Title {
+    padding: 0 10px;
+  }
+
+  h2, p, h4 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  .GlassyBox {
+    padding: 100px 47px 20px;
+    min-height: 100%;
+    z-index: 3;
+
+    .EventsWrapper {
+      overflow-y: auto;
+      height: 53vh;
+
+      .Event {
+        margin: 0 10px;
+
+        h3, p {
+          font-size: 20px;
+        }
+        &Type {
+          padding: 20px 0 5px;
+          text-align: center;
+        }
+        &Title {
+          padding: 30px 0 10px;
+        }
+
+        &Data {
+
+        }
+
+        &Button {
+          margin: 20px 0 !important;
+          text-align: center;
+
+          a {
+            text-decoration: none;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .SavedEvents {
+    margin-top: 30px;
+    padding: 0 10px;
+    &Title {
+      margin-bottom: 30px;
+    }
+
+    .SavedEvent {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px 0;
+      &Title{
+        font-size: 20px;
+      }
+      .SavedEventRemoveBtn {
+        background: transparent;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+
+}
+
+// Color Theme Settings
+
+.light {
+  color: $dark;
+
+  a {
+    color: $dark;
+  }
+
+  hr {
+    border-color: $dark;
+  }
+
+  .EventTitle {
+    color: $light-secondary;
+  }
+
+  .XButton {
+    &:before, &:after {
+      background-color: $dark;
+    }
+  }
+}
+
+.dark {
+  color: $light;
+
+  a {
+    color: $light;
+  }
+
+  hr {
+    border-color: $light;
+  }
+
+  .EventTitle {
+    color: $light-secondary;
+  }
+
+  .SavedEventRemoveBtn {
+    color: $light;
+  }
+
+  .XButton {
+    &:before, &:after {
+      background-color: $light;
+    }
+  }
+}

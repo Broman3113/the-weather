@@ -1,0 +1,12 @@
+@use "./src/styles/scrollbar";
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+h2, h3, h5, p, a {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+}

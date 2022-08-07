@@ -1,0 +1,9 @@
+export const selectWeatherInfo = state => state.weather.weatherInfo;
+export const selectIsWeatherInfoLoading = state => state.weather.isWeatherInfoLoading;
+export const selectIsWeatherInfoError = state => state.weather.isWeatherInfoError;
+export const selectWeatherHistoryInfo = state => state.weather.weatherHistoryInfo;
+export const selectWeatherDayToDisplay = state => state.weather.weatherDayToDisplay;
+export const selectWeatherHistoryDayDetails = state => state.weather.weatherHistoryInfo.forecast.forecastday[0].day;
+export const selectWeatherHistoryHourDetails = state => state.weather.weatherHistoryInfo.forecast.forecastday[0].hour;
+export const selectIsWeatherHistoryInfoLoading = state => state.weather.isWeatherHistoryInfoLoading;
+export const selectIsWeatherHistoryInfoError = state => state.weather.isWeatherHistoryInfoError;

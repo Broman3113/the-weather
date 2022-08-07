@@ -1,0 +1,110 @@
+@use "../../../styles/colors" as *;
+
+.WeatherDetails {
+  text-align: left;
+  position: relative;
+
+  .Divider {
+    margin: 33px 0 0 0;
+  }
+
+  h2, h3, h5, p, a {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+  }
+  h3{
+    padding: 69px 0;
+  }
+
+  .GlassyBox{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  .WeatherDetailsWrapper {
+    position: relative;
+    padding: 100px 84px;
+    height: 100%;
+    .SavedLocationTitle{
+      padding: 69px 0 33px;
+      transition: color .2s ease;
+    }
+    .SavedLocationsList {
+      overflow-x: auto;
+      font-size: 20px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      height: 200px;
+      li {
+        display: inline-block;
+        width: 50%;
+        min-width: 100px;
+        margin-top: 36px;
+        span{
+          cursor: pointer;
+          transition: color .2s ease;
+          &:hover{
+            color: $primary;
+          }
+        }
+      }
+    }
+    .WeatherDetailsTitle{
+      transition: color .6s ease;
+    }
+    .WeatherData {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: end;
+      gap: 28px 0;
+      text-align: center;
+      transition: color .8s ease;
+      h5, p {
+        font-size: 16px;
+      }
+
+      h5 {
+        margin-bottom: 8px;
+      }
+    }
+    .SportEvents {
+      position: absolute;
+      bottom: 64px;
+      right: 84px;
+      text-decoration: none;
+      transition: color 1s ease;
+    }
+  }
+}
+
+
+
+.light {
+  color: $dark;
+
+    hr {
+    border-color: $dark;
+            transition: border-color .6s ease;
+  }
+  a {
+    color: $dark;
+
+  }
+}
+
+.dark {
+  color: $light;
+
+    hr {
+    border-color: $light;
+            transition: border-color .6s ease;
+  }
+  a {
+    color: $light;
+  }
+}

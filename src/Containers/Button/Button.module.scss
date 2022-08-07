@@ -1,0 +1,25 @@
+.Button{
+  background-color: #D9D9D9;
+  color: #313131;
+  padding: 7px 8px;
+  border: none;
+  transition: all .3s;
+  outline: none;
+  font-size: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  &:hover{
+    background-color: #00C8F3;
+    color: #fff;
+  }
+  &:active{
+    background-color: darken(#00C8F3, 50%);
+    color: darken(#fff, 20%);
+  }
+  &:disabled{
+    background-color: darken(#D9D9D9, 50%);
+    color: darken(#313131, 20%);
+    cursor: default;
+  }
+}
+

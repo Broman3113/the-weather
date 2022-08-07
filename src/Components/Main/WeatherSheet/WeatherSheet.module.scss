@@ -1,0 +1,37 @@
+@use "../../../styles/colors" as *;
+
+.WeatherSheet {
+  padding: 38px;
+  display: grid;
+  min-height: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-areas:  "profile profile profile upcomingDays upcomingDays upcomingDays star"
+                        "weatherDisplay weatherDisplay weatherDisplay weatherDisplay weatherDisplay weatherDisplay weatherDisplay";
+}
+
+
+.star {
+  grid-area: star;
+  text-align: right;
+
+  img {
+    width: 35px;
+    border-radius: 50px;
+    padding: 3px;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+      transition: background-color 0.5s ease-in-out;
+    }
+  }
+}
+
+.light {
+  color: $dark;
+  transition: color .2s ease;
+}
+
+.dark {
+  color: $light;
+  transition: color .2s ease;
+}

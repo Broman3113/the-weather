@@ -1,0 +1,54 @@
+{
+  "ProfileMenu": {
+    "RemoveFromFavorites": "Видалити з обраних",
+    "AddToFavorites": "Додати до обраних",
+    "System": "Система",
+    "Metric": "метрична",
+    "Imperial": "англійська",
+    "Language": "Мова",
+    "PickADate": "Оберіть дату",
+    "Logout": "Вийти"
+  },
+  "UpcomingDays": {
+    "Min": "мін",
+    "Max": "макс"
+  },
+  "WeatherDetails": {
+    "SavedLocations": "Збережені міста",
+    "NoFavoriteCitiesYet": "Ще немає збережених міст",
+    "WeatherDetails": "Деталі погоди",
+    "MaxWind": "Максимальна швидкість вітру",
+    "TotalPrecipitation": "Загальні опади",
+    "AverageHumidity": "Середня вологість",
+    "AverageVisibility": "Середня видимість",
+    "MinTemperature": "Мін температура",
+    "MaxTemperature": "Макс температура",
+    "SportEvents": "Спортивні події",
+    "Wind": "Вітер",
+    "Precipitation": "Опади",
+    "Humidity": "Вологість",
+    "Visibility": "Видимість",
+    "WindDirection": "Напрямок вітру",
+    "Pressure": "Тиск",
+    "Ultraviolet": "Ультрафіолет",
+    "FeelsLike": "Відчувається як"
+  },
+  "SearchLocation": {
+    "AnotherLocation": "Інше місцезнаходження",
+    "SavedLocation": "Збережене місто",
+    "NoResults": "Немає результатів"
+  },
+  "SportEvents": {
+    "SportEvents": "Спортивні події",
+    "Football": "Футбол",
+    "Cricket": "Крикет",
+    "Golf": "Гольф",
+    "Country": "Країна",
+    "Tournament": "Турнір",
+    "Match": "Матч",
+    "Stadium": "Стадіон",
+    "Start": "Початок",
+    "AddToFavorite": "Додати до обраних",
+    "SavedEvents": "Збережені події"
+  }
+}
