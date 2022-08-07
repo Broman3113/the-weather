@@ -1,13 +1,13 @@
 import React, {useCallback, useState} from 'react';
-import GlassyBox from "../../Containers/GlassyBox/GlassyBox";
+import {useDispatch, useSelector} from "react-redux";
 import classes from './auth.module.scss'
+
 import {Modal, TextField, useTheme} from "@mui/material";
 import Button from "../../Containers/Button/Button";
-import {useDispatch, useSelector} from "react-redux";
+import GlassyBox from "../../Containers/GlassyBox/GlassyBox";
 import {selectUsers} from "../../store/users/selectors";
 import {setIsAuth, setUserInfoAction} from "../../store/profile/actions";
 import useModal from "../../hooks/useModal";
-import {selectProfile} from "../../store/profile/selectors";
 import {useInput} from "../../hooks/validationHooks/useInput";
 
 const styles = {
@@ -38,11 +38,9 @@ const LoginComponent = (props) => {
         props.setSearchParams({authType: 'register'});
     }, [])
 
-    const onSubmitClicked = () => {
+    const onSubmitClicked = useCallback(() => {
         const userState = users.filter(user => user.email === email.value)[0] || "";
         if (userState !== "") {
-            console.log("userState.password", userState.password);
-            console.log("password.value", password.value);
             if (userState.password === password.value) {
                 setModalModalMessage("All good!");
                 toggle();
@@ -58,7 +56,7 @@ const LoginComponent = (props) => {
             setModalModalMessage("User with such email haven't found!");
             toggle();
         }
-    }
+    } , [users, password, email, dispatch, toggle])
     return (
         <>
             <GlassyBox className={[classes.GlassyBox, classes[theme.palette.mode]].join(' ')}>

@@ -1,38 +1,39 @@
 import React, {useCallback} from 'react';
+import {useSelector} from "react-redux";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import classes from "./WeatherDetails.module.scss"
+
 import GlassyBox from "../../../Containers/GlassyBox/GlassyBox";
+import SearchLocation from "./SearchLocation/SearchLocation";
 import {useTheme} from "@mui/material";
 import SportEvents from "../SportEvents/SportEvents";
-import {useSelector} from "react-redux";
 import {
     selectWeatherHistoryDayDetails,
     selectWeatherInfo
 } from "../../../store/weather/selectors";
 import {selectFavoriteCities, selectIsMetric} from "../../../store/profile/selectors";
-import SearchLocation from "./SearchLocation/SearchLocation";
-import {useNavigate, useParams, useSearchParams} from "react-router-dom";
+
 import {useTranslation} from "react-i18next";
 
 
 const WeatherDetails = () => {
     const theme = useTheme();
     const weatherInfo = useSelector(selectWeatherInfo);
-    const weatherHistoryDayDetails = useSelector(selectWeatherHistoryDayDetails)
+    const weatherHistoryDayDetails = useSelector(selectWeatherHistoryDayDetails);
+    const isMetric = useSelector(selectIsMetric);
+    const favoriteCities = useSelector(selectFavoriteCities);
 
     const [searchParams, setSearchParams] = useSearchParams();
     const sportEvents = searchParams.get('sportEvents');
 
-    const isMetric = useSelector(selectIsMetric);
-    const {location} = useParams();
-    const {date} = useParams();
+    const {location, date} = useParams();
     const navigate = useNavigate();
-    const favoriteCities = useSelector(selectFavoriteCities);
 
     const {t} = useTranslation();
 
-    const onAnotherLocationClicked = (city) => {
+    const onAnotherLocationClicked = useCallback((city) => {
         navigate(`../${city}`, {replace: true});
-    }
+    } , [navigate]);
     const onSportEventOpen = useCallback((e) => {
         e.preventDefault();
         setSearchParams({sportEvents: "show"});

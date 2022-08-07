@@ -1,27 +1,26 @@
 import React, {useCallback, useEffect, useMemo} from 'react';
+import {useDispatch} from "react-redux";
+import {useNavigate, useParams} from "react-router-dom";
+import {fetchWeather, fetchWeatherHistory} from "../../store/weather/thunks";
 import classes from './Main.module.scss'
 import WeatherDetails from "./WeatherDetails/WeatherDetails";
 import WeatherSheet from "./WeatherSheet/WeatherSheet";
-import {useDispatch} from "react-redux";
-import {fetchWeather, fetchWeatherHistory} from "../../store/weather/thunks";
-import {useNavigate, useParams} from "react-router-dom";
 import dayjs from "dayjs";
 
 const Main = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const {location} = useParams();
-    const {date} = useParams();
+    const {location, date} = useParams();
     const locationLocalStorage = useMemo(() => JSON.parse(localStorage.profile).profileSettings.location, [localStorage.profile]);
 
     useEffect(() => {
         if (location) {
             dispatch(fetchWeather(location));
         } else if(locationLocalStorage) {
-            navigate(locationLocalStorage)
+            navigate(locationLocalStorage);
         } else {
-            navigate(`Kiev`)
+            navigate(`Kiev`);
         }
     }, [location])
 

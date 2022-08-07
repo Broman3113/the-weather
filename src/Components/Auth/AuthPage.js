@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './auth.module.scss'
 
-import GlassyBox from "../../Containers/GlassyBox/GlassyBox";
 import LoginComponent from "./LoginComponent";
 import RegistrationComponent from "./RegistrationComponent";
 import {useSearchParams} from "react-router-dom";

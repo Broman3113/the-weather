@@ -1,14 +1,15 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {useCallback, useContext, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useParams} from "react-router-dom";
+
 import classes from './ProfileMenu.module.scss';
 import {IconButton, TextField, useTheme} from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import GlassyBox from "../../../../Containers/GlassyBox/GlassyBox";
 import Switcher from "../../../../Containers/Switcher/Switcher";
 import {ColorModeContext} from "../../../../App";
-import {useDispatch, useSelector} from "react-redux";
-import {addToFavorites, removeFromFavorites, setIsAuth, toggleMeasureType} from "../../../../store/profile/actions";
 import {selectFavoriteCities, selectIsMetric} from "../../../../store/profile/selectors";
-import {useNavigate, useParams} from "react-router-dom";
+import {addToFavorites, removeFromFavorites, setIsAuth, toggleMeasureType} from "../../../../store/profile/actions";
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
@@ -34,7 +35,7 @@ const ProfileMenu = () => {
     const colorMode = useContext(ColorModeContext);
     const [isShowing, setShowing] = useState(false);
     const dispatch = useDispatch();
-    const [valueDate, setValueDate] = React.useState(date || null);
+    const [valueDate, setValueDate] = useState(date || null);
     const isMetric = useSelector(selectIsMetric);
     const favoriteCities = useSelector(selectFavoriteCities);
     const {location} = useParams();
@@ -42,34 +43,35 @@ const ProfileMenu = () => {
 
     const {t, i18n} = useTranslation();
 
-    const toggleProfileMenu = () => {
+    const toggleProfileMenu = useCallback(() => {
         setShowing(!isShowing);
-    }
-    const onToggleMeasureSystem = () => {
+    } , [isShowing]);
+    const onToggleMeasureSystem = useCallback(() => {
         dispatch(toggleMeasureType());
-    }
-    const onAddToFavorites = () => {
+    } , []);
+    const onAddToFavorites = useCallback(() => {
         dispatch(addToFavorites(location));
-    }
-    const onRemoveFromFavorites = () => {
+    } , [location]);
+    const onRemoveFromFavorites = useCallback(() => {
         dispatch(removeFromFavorites(location));
-    }
-    const onChangeLang = (lang) => {
+    } , [location]);
+    const onChangeLang = useCallback((lang) => {
         i18n.changeLanguage(lang);
-    }
-    const onValueDateChange = (newValue) => {
+    } , []);
+    const onValueDateChange = useCallback((newValue) => {
         setValueDate(newValue);
         navigate(`../${location}/${dayjs(newValue).format('YYYY-MM-DD')}`, { replace: true });
-    }
-    const onLogout = () => {
+    } , [location]);
+    const onLogout = useCallback(() => {
         localStorage.profile.clear;
         dispatch(setIsAuth(false));
         navigate('../', {replace: true});
-    }
+    } , []);
     const getDaysAgoDate = useCallback((days) => {
         const now = new Date();
         return new Date(now.getFullYear(), now.getMonth(), now.getDate() - days); // Getting Date some (days) ago
     }, [])
+
     return (
         <div className={[classes.ProfileMenu, classes[theme.palette.mode]].join(' ')}>
             <IconButton sx={{fontSize: '40px', top: '-13px'}} aria-label="delete" size="large" onClick={toggleProfileMenu}>

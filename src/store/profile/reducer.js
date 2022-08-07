@@ -25,7 +25,6 @@ const initialState = {
 }
 
 export const profileReducer = (state = initialState, action) => {
-    console.log(action.type)
     switch (action.type) {
         case SET_USER_INFO_ACTION:
             const setUserInfoState = {...state, user: action.user}
