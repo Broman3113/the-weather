@@ -96,7 +96,7 @@ const LoginComponent = (props) => {
                 >Submit</Button>
                 <br/>
                 <br/>
-                <Button onClick={() => console.log(users)}>Get users</Button>
+                {/*<Button onClick={() => console.log(users)}>Get users</Button>*/}
             </GlassyBox>
 
 
