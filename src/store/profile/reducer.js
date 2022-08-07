@@ -16,6 +16,7 @@ const initialState = {
         password: null,
     },
     isAuth: false,
+    darkMode: true,
     profileSettings: {
         isMetric: true,
         location: null,

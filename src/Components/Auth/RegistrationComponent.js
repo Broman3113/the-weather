@@ -42,7 +42,7 @@ const RegistrationComponent = (props) => {
     const navigate = useNavigate();
 
 
-    const onAuthLinkClicked = (e) => useCallback(() => {
+    const onAuthLinkClicked = useCallback((e) => {
         e.preventDefault();
         props.setSearchParams({authType: 'login'});
     }, [props])

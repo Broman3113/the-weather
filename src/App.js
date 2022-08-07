@@ -24,7 +24,12 @@ function App() {
     // Checking if profile localstorage exists we set it to profile state
     // If not we set localstorage profile to initial profile state
     // The same we do for users
+
+
     useEffect(() => {
+        if (localStorage.darkMode === null) {
+            localStorage.darkMode = "true";
+        }
         if (localStorage.profile) {
             dispatch(setProfileAction(JSON.parse(localStorage.profile))); // Check if localStorage.profile isn't empty, we set profile settings from localStorage.profile
         } else {
@@ -37,20 +42,19 @@ function App() {
         }
     }, []);
 
-
+    console.log(localStorage.darkMode);
     const profile = useSelector(selectProfileState);
     const users = useSelector(selectUsersState);
     const dispatch = useDispatch();
     const isAuth = useSelector(selectIsAuth);
 
     //Toggle theme mode
-    const [mode, setMode] = React.useState(JSON.parse(localStorage.darkMode) ? 'dark' : 'light');
-    const [color, setColor] = React.useState(JSON.parse(localStorage.darkMode) ? '#fff' : '#1f1f1f');
+    const [mode, setMode] = React.useState(localStorage.darkMode === "true" ? 'dark' : 'light');
+    const [color, setColor] = React.useState(localStorage.darkMode === "true" ? '#fff' : '#1f1f1f');
     const colorMode = React.useMemo(
         () => ({
             toggleColorMode: () => {
-                localStorage.darkMode = !(JSON.parse(localStorage.darkMode));
-                console.log(localStorage.darkMode, JSON.parse(localStorage.darkMode));
+                localStorage.darkMode = localStorage.darkMode !== "true";
                 setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
                 setColor((prevMode) => (prevMode === '#fff' ? '#1f1f1f' : '#fff'));
             },
