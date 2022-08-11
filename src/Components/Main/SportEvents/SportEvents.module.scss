@@ -1,5 +1,7 @@
 @use "../../../styles/colors" as *;
 
+
+
 .SportEventsCloseBtn{
   position: absolute;
   right: 40px;
@@ -9,7 +11,7 @@
 .SportEvents {
   text-align: left;
   overflow-y: auto;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   height: 100%;
@@ -29,7 +31,7 @@
     padding: 100px 47px 20px;
     min-height: 100%;
     z-index: 3;
-
+    border-radius: 0;
     .EventsWrapper {
       overflow-y: auto;
       height: 53vh;
