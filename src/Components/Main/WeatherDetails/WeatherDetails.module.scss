@@ -29,6 +29,9 @@
   .WeatherDetailsWrapper {
     position: relative;
     padding: 30px 84px 0;
+    @media (max-width: 768px) {
+      padding: 30px 30px 50px;
+    }
     height: 100%;
     .SavedLocationTitle{
       padding: 69px 0 33px;
@@ -75,11 +78,16 @@
     }
     .SportEvents {
       position: absolute;
-      bottom: 80px;
-      right: -20px;
+      bottom: 60px;
+      right: -5%;
       text-decoration: none;
       transform: rotate(90deg);
       transition: color 1s ease;
+      @media (max-width: 768px) {
+        transform: rotate(0deg);
+        bottom: -10px;
+        right: 30px;
+      }
     }
   }
 }
