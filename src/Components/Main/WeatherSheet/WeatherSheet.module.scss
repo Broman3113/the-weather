@@ -7,6 +7,18 @@
   grid-template-columns: repeat(7, 1fr);
   grid-template-areas:  "profile profile profile upcomingDays upcomingDays upcomingDays star"
                         "weatherDisplay weatherDisplay weatherDisplay weatherDisplay weatherDisplay weatherDisplay weatherDisplay";
+  @media (max-width: 1600px) {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:  "profile upcomingDays upcomingDays upcomingDays star"
+                        "weatherDisplay weatherDisplay weatherDisplay weatherDisplay weatherDisplay";
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:  "profile star"
+                          "upcomingDays upcomingDays"
+                          "weatherDisplay weatherDisplay";
+    padding: 10px;
+  }
 }
 
 

@@ -32,10 +32,8 @@ const SportEvents = ({setSearchParams, searchParams, location}) => {
     }, [removeFavoriteSportEvent]);
 
     useEffect(() => {
-        console.log("Location: ", location)
         dispatch(fetchSportEvents(location));
     }, [location])
-    console.log(sportEvents);
     return (
         <div className={[classes.SportEvents, classes[theme.palette.mode]].join(' ')}>
             <GlassyBox className={classes.GlassyBox}>

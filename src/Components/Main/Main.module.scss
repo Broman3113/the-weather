@@ -2,4 +2,7 @@
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   min-height: 100vh;
+  @media (max-width: 1024px) {
+    display: block;
+  }
 }

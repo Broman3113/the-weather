@@ -2,6 +2,8 @@
 
 .UpcomingDays{
   grid-area: upcomingDays;
+  min-width: 390px;
+
   p{
     font-size: 24px;
   }

@@ -8,6 +8,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    @media (max-width: 1024px) {
+      margin-top: 20px;
+      padding-left: 0;
+    }
     .WeatherTemperature{
       span{
         font-size: 172px;
@@ -16,6 +20,8 @@
     }
     .WeatherWrapper{
       display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
       .WeatherCityInfo{
         display: flex;
         flex-direction: column;
@@ -34,6 +40,10 @@
         flex-direction: column;
         justify-content: flex-end;
         margin: 0 0 0 50px;
+
+        @media (max-width: 1024px) {
+          margin: 0;
+        }
         &Image{
           img{
             width: 80px;
@@ -49,10 +59,17 @@
 
   &Hourly{
     margin: 50px 0 0 11%;
+
+    @media (max-width: 1024px) {
+      margin: 50px 0 0 0;
+      .GlassyBox{
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+
     .GlassyBox{
-      display: flex;
       width: 79%;
-      overflow-x: auto;
       .HourlyItem{
         padding: 25px 0;
         .WeatherTime{
