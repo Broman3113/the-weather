@@ -101,19 +101,21 @@ const WeatherDisplay = () => {
                 <div className={classes.WeatherTemperature}>
                     <span>{isMetric ? Math.trunc(weatherInfo.current?.temp_c) || "" : Math.trunc(weatherInfo.current?.temp_f) || ""}°</span>
                 </div>
-                <div className={classes.WeatherCityInfo}>
-                    <div className={classes.WeatherCityInfoCity}>
-                        <p>{weatherInfo.location?.name || "City"}</p>
+                <div className={classes.WeatherWrapper}>
+                    <div className={classes.WeatherCityInfo}>
+                        <div className={classes.WeatherCityInfoCity}>
+                            <p>{weatherInfo.location?.name || "City"}</p>
+                        </div>
+                        <div className={classes.WeatherCityInfoDate}>
+                            <span>{dayjs(weatherInfo.location?.localtime).format('HH:mm - dddd, DD MMM \' YY')}</span>
+                        </div>
                     </div>
-                    <div className={classes.WeatherCityInfoDate}>
-                        <span>{dayjs(weatherInfo.location?.localtime).format('HH:mm - dddd, DD MMM \' YY')}</span>
+                    <div className={classes.WeatherType}>
+                        <div className={classes.WeatherTypeImage}><img src={weatherInfo.current?.condition.icon || ""}
+                                                                       alt={weatherInfo.current?.condition.text || ""}/>
+                        </div>
+                        <div className={classes.WeatherTypeTitle}>{weatherInfo.current?.condition.text || ""}</div>
                     </div>
-                </div>
-                <div className={classes.WeatherType}>
-                    <div className={classes.WeatherTypeImage}><img src={weatherInfo.current?.condition.icon || ""}
-                                                                   alt={weatherInfo.current?.condition.text || ""}/>
-                    </div>
-                    <div className={classes.WeatherTypeTitle}>{weatherInfo.current?.condition.text || ""}</div>
                 </div>
             </div>
             <div className={classes.WeatherDisplayHourly}>

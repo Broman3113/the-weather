@@ -3,7 +3,7 @@
 .WeatherDetails {
   text-align: left;
   position: relative;
-
+  height: 100%;
   .Divider {
     margin: 33px 0 0 0;
   }
@@ -27,7 +27,7 @@
   }
   .WeatherDetailsWrapper {
     position: relative;
-    padding: 100px 84px;
+    padding: 30px 84px 0;
     height: 100%;
     .SavedLocationTitle{
       padding: 69px 0 33px;
@@ -74,9 +74,10 @@
     }
     .SportEvents {
       position: absolute;
-      bottom: 64px;
-      right: 84px;
+      bottom: 80px;
+      right: -20px;
       text-decoration: none;
+      transform: rotate(90deg);
       transition: color 1s ease;
     }
   }

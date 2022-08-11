@@ -85,7 +85,7 @@ function App() {
     return (
         // Suspense is react component for lazy loading
         <Suspense fallback="...Loading">
-            <div className="App" style={{background: `url(${theme.palette.mode === "dark" ? cloudyDark : cloudyWhite}) fixed no-repeat`, transition: "background .5s ease"}}>
+            <div className="App" style={{backgroundImage: `url(${theme.palette.mode === "dark" ? cloudyDark : cloudyWhite})`}}>
 
                 <ColorModeContext.Provider value={colorMode}>
                     <ThemeProvider theme={theme}>
