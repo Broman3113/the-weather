@@ -4,7 +4,7 @@
   position: relative;
   grid-area: profile;
   text-align: left;
-
+  z-index: 5;
 
 
   .GlassyBox {
@@ -12,7 +12,7 @@
     padding: 20px 40px;
     left: 70px;
     top: 0;
-    width: 78%;
+
     button {
       transition: all 0.2s ease;
       &:hover{

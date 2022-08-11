@@ -40,7 +40,7 @@ const WeatherDisplay = () => {
     ], [weatherDayToDisplay, weatherInfo]);
 
 
-    if  (isWeatherInfoLoading) {
+    if (isWeatherInfoLoading) {
         return <div className={classes.WeatherDisplay}>Loading...</div>
     }
     if (date) {
@@ -56,8 +56,9 @@ const WeatherDisplay = () => {
                         </div>
                     </div>
                     <div className={classes.WeatherType}>
-                        <div className={classes.WeatherTypeImage}><img src={weatherHistoryDayDetails.condition?.icon || ""}
-                                                                       alt={weatherHistoryDayDetails.condition?.text || ""}/>
+                        <div className={classes.WeatherTypeImage}><img
+                            src={weatherHistoryDayDetails.condition?.icon || ""}
+                            alt={weatherHistoryDayDetails.condition?.text || ""}/>
                         </div>
                         <div className={classes.WeatherTypeTitle}>{weatherHistoryDayDetails.condition?.text || ""}</div>
                     </div>
@@ -121,12 +122,23 @@ const WeatherDisplay = () => {
             <div className={classes.WeatherDisplayHourly}>
                 <GlassyBox className={classes.GlassyBox}>
                     <Swiper
-                        slidesPerView={6.4}
+                        slidesPerView={3.4}
                         spaceBetween={0}
                         grabCursor={true}
                         mousewheel={true}
                         className="mySwiper"
                         modules={[Mousewheel]}
+                        breakpoints={{
+                            481: {
+                                slidesPerView: 3.4,
+                            },
+                            1400: {
+                                slidesPerView: 5.4,
+                            },
+                            1600: {
+                                slidesPerView: 6.4,
+                            },
+                        }}
                     >
                         {
                             weatherToDisplay.map((hourlyInfo, index) => <SwiperSlide key={index}>

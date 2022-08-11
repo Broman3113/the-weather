@@ -42,7 +42,6 @@ function App() {
         }
     }, []);
 
-    console.log(localStorage.darkMode);
     const profile = useSelector(selectProfileState);
     const users = useSelector(selectUsersState);
     const dispatch = useDispatch();
