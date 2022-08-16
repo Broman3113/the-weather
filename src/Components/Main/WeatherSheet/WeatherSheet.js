@@ -8,7 +8,7 @@ import WeatherDisplay from "./WeatherDisplay/WeatherDisplay";
 import {selectFavoriteCities} from "../../../store/profile/selectors";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {removeFromFavorites} from "../../../store/profile/actions";
+import {removeFromFavoritesThunk} from "../../../store/profile/thunks";
 
 const WeatherSheet = () => {
     const theme = useTheme();
@@ -18,7 +18,7 @@ const WeatherSheet = () => {
 
     const onRemoveFromFavorites = useCallback((e) => {
         e.preventDefault();
-        dispatch(removeFromFavorites(location));
+        dispatch(removeFromFavoritesThunk(location));
     } , [location]);
 
     return (

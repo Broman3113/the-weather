@@ -17,13 +17,9 @@ const initialState = {
 export const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_USER_ACTION:
-            const addUserState = {...state, users: [...state.users, { id: state.nextId, ...action.user}], nextId: state.nextId + 1}
-            localStorage.users = JSON.stringify(addUserState);
-            return addUserState;
+            return {...state, users: [...state.users, { id: state.nextId, ...action.user}], nextId: state.nextId + 1}
         case SET_USERS_ACTION:
-            const setUsersState = action.users;
-            localStorage.users = JSON.stringify(setUsersState);
-            return setUsersState
+            return action.users;
         default:
             return state
     }

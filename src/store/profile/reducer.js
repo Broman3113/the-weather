@@ -28,41 +28,23 @@ const initialState = {
 export const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER_INFO_ACTION:
-            const setUserInfoState = {...state, user: action.user}
-            localStorage.profile = JSON.stringify(setUserInfoState)
-            return setUserInfoState
+            return {...state, user: action.user}
         case SET_IS_AUTH_ACTION:
-            const setIsAuthState = {...state, isAuth: action.payload}
-            localStorage.profile = JSON.stringify(setIsAuthState)
-            return setIsAuthState
+            return {...state, isAuth: action.payload}
         case SET_PROFILE_ACTION:
-            const setProfileState = action.profile;
-            localStorage.profile = JSON.stringify(setProfileState)
-            return setProfileState
+            return action.profile
         case TOGGLE_MEASURE_TYPE:
-            const toggleMeasureTypeState = {...state, profileSettings: {...state.profileSettings, isMetric: !state.profileSettings.isMetric}}
-            localStorage.profile = JSON.stringify(toggleMeasureTypeState)
-            return toggleMeasureTypeState
+            return {...state, profileSettings: {...state.profileSettings, isMetric: !state.profileSettings.isMetric}}
         case SET_LOCATION:
-            const setLocationState = {...state, profileSettings: {...state.profileSettings, location: action.location}}
-            localStorage.profile = JSON.stringify(setLocationState)
-            return setLocationState
+            return {...state, profileSettings: {...state.profileSettings, location: action.location}}
         case ADD_TO_FAVORITES_ACTION:
-            const addToFavoritesState = {...state, favoriteCities: [...state.favoriteCities, action.city]}
-            localStorage.profile = JSON.stringify(addToFavoritesState);
-            return addToFavoritesState
+            return {...state, favoriteCities: [...state.favoriteCities, action.city]}
         case REMOVE_FROM_FAVORITES_ACTION:
-            const removeFromFavoritesState = {...state, favoriteCities: state.favoriteCities.filter(city => city !== action.city)}
-            localStorage.profile = JSON.stringify(removeFromFavoritesState);
-            return removeFromFavoritesState;
+            return {...state, favoriteCities: state.favoriteCities.filter(city => city !== action.city)};
         case ADD_FAVORITE_SPORT_EVENT_ACTION:
-            const addFavoriteSportEventState = {...state, favoriteSportEvents: [action.sportEvent, ...state.favoriteSportEvents]}
-            localStorage.profile = JSON.stringify(addFavoriteSportEventState);
-            return addFavoriteSportEventState;
+            return {...state, favoriteSportEvents: [action.sportEvent, ...state.favoriteSportEvents]}
         case REMOVE_FAVORITE_SPORT_EVENT_ACTION:
-            const removeFavoriteSportEventState = {...state, favoriteSportEvents: state.favoriteSportEvents.filter(sportEvent => sportEvent.id !== action.id)}
-            localStorage.profile = JSON.stringify(removeFavoriteSportEventState);
-            return removeFavoriteSportEventState;
+            return {...state, favoriteSportEvents: state.favoriteSportEvents.filter(sportEvent => sportEvent.id !== action.id)}
         default:
             return state
     }

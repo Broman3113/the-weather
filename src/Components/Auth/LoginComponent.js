@@ -6,9 +6,9 @@ import {Modal, TextField, useTheme} from "@mui/material";
 import Button from "../../Containers/Button/Button";
 import GlassyBox from "../../Containers/GlassyBox/GlassyBox";
 import {selectUsers} from "../../store/users/selectors";
-import {setIsAuth, setUserInfoAction} from "../../store/profile/actions";
 import useModal from "../../hooks/useModal";
 import {useInput} from "../../hooks/validationHooks/useInput";
+import {setIsAuthThunk, setUserInfoThunk} from "../../store/profile/thunks";
 
 const styles = {
     TextField: {
@@ -44,9 +44,9 @@ const LoginComponent = (props) => {
             if (userState.password === password.value) {
                 setModalModalMessage("All good!");
                 toggle();
-                dispatch(setUserInfoAction(userState));
+                dispatch(setUserInfoThunk(userState));
                 setTimeout(() => {
-                    dispatch(setIsAuth(true));
+                    dispatch(setIsAuthThunk(true));
                 }, 1500)
             } else {
                 setModalModalMessage("Wrong Password");

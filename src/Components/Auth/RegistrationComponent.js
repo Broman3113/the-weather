@@ -1,7 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {addUserAction} from "../../store/users/actions";
 import useModal from "../../hooks/useModal";
 
 import {Modal, TextField, useTheme} from "@mui/material";
@@ -10,6 +9,7 @@ import Button from "../../Containers/Button/Button";
 
 import classes from "./auth.module.scss";
 import {useInput} from "../../hooks/validationHooks/useInput";
+import {addUserThunk} from "../../store/users/thunks";
 
 const styles = {
     TextField: {
@@ -47,13 +47,13 @@ const RegistrationComponent = (props) => {
         props.setSearchParams({authType: 'login'});
     }, [props])
 
-    const onSubmitClicked =() => {
+    const onSubmitClicked = () => {
         codeModal.toggle();
     }
 
     const onCodeConfirmed = useCallback((inputCode) => {
         if (inputCode === '1234') {
-            dispatch(addUserAction({
+            dispatch(addUserThunk({
                 email: email.value,
                 phone: phone.value,
                 name: name.value,
