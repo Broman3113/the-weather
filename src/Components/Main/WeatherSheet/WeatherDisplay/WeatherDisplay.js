@@ -47,20 +47,23 @@ const WeatherDisplay = () => {
         return (
             <div className={[classes.WeatherDisplay, classes[theme.palette.mode]].join(' ')}>
                 <div className={classes.WeatherDisplayUpperInfo}>
-                    <div className={classes.WeatherCityInfo}>
-                        <div className={classes.WeatherCityInfoCity}>
-                            <p>{weatherHistoryInfo.location?.name || "City"}</p>
+                    <div className={classes.WeatherWrapper}>
+                        <div className={classes.WeatherCityInfo}>
+                            <div className={classes.WeatherCityInfoCity}>
+                                <p>{weatherHistoryInfo.location?.name || "City"}</p>
+                            </div>
+                            <div className={classes.WeatherCityInfoDate}>
+                                <span>{dayjs(date).format('dddd, DD MMM \' YY')}</span>
+                            </div>
                         </div>
-                        <div className={classes.WeatherCityInfoDate}>
-                            <span>{dayjs(date).format('dddd, DD MMM \' YY')}</span>
+                        <div className={classes.WeatherType}>
+                            <div className={classes.WeatherTypeImage}><img
+                                src={weatherHistoryDayDetails.condition?.icon || ""}
+                                alt={weatherHistoryDayDetails.condition?.text || ""}/>
+                            </div>
+                            <div
+                                className={classes.WeatherTypeTitle}>{weatherHistoryDayDetails.condition?.text || ""}</div>
                         </div>
-                    </div>
-                    <div className={classes.WeatherType}>
-                        <div className={classes.WeatherTypeImage}><img
-                            src={weatherHistoryDayDetails.condition?.icon || ""}
-                            alt={weatherHistoryDayDetails.condition?.text || ""}/>
-                        </div>
-                        <div className={classes.WeatherTypeTitle}>{weatherHistoryDayDetails.condition?.text || ""}</div>
                     </div>
                 </div>
                 <div className={classes.WeatherDisplayHourly}>
@@ -122,14 +125,14 @@ const WeatherDisplay = () => {
             <div className={classes.WeatherDisplayHourly}>
                 <GlassyBox className={classes.GlassyBox}>
                     <Swiper
-                        slidesPerView={3.4}
+                        slidesPerView={6.4}
                         spaceBetween={0}
                         grabCursor={true}
                         mousewheel={true}
                         className="mySwiper"
                         modules={[Mousewheel]}
                         breakpoints={{
-                            481: {
+                            0: {
                                 slidesPerView: 3.4,
                             },
                             1400: {

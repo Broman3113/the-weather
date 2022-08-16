@@ -7,9 +7,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {fetchSportEvents} from "../../../store/sport/thunks";
 import {useDispatch, useSelector} from "react-redux";
 import {selectSportEvents} from "../../../store/sport/selectors";
-import {addFavoriteSportEvent, removeFavoriteSportEvent} from "../../../store/profile/actions";
 import {selectFavoriteSportEvents} from "../../../store/profile/selectors";
 import {useTranslation} from "react-i18next";
+import {addFavoriteSportEventThunk, removeFavoriteSportEventThunk} from "../../../store/profile/thunks";
 
 
 const SportEvents = ({setSearchParams, searchParams, location}) => {
@@ -25,11 +25,11 @@ const SportEvents = ({setSearchParams, searchParams, location}) => {
 
     const onAddEventToFavorite = useCallback((e, sportEvent) => {
         e.preventDefault();
-        dispatch(addFavoriteSportEvent(sportEvent));
-    }, [addFavoriteSportEvent]);
+        dispatch(addFavoriteSportEventThunk(sportEvent));
+    }, [addFavoriteSportEventThunk]);
     const onRemoveEventFromFavorite = useCallback((id) => {
-        dispatch(removeFavoriteSportEvent(id));
-    }, [removeFavoriteSportEvent]);
+        dispatch(removeFavoriteSportEventThunk(id));
+    }, [removeFavoriteSportEventThunk]);
 
     useEffect(() => {
         dispatch(fetchSportEvents(location));

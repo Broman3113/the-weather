@@ -5,7 +5,7 @@ import {
     setWeatherInfoRequest,
     setWeatherInfoSuccess
 } from "./actions";
-import {setLocation} from "../profile/actions";
+import {setLocationThunk} from "../profile/thunks";
 
 const options = {
     method: 'GET',
@@ -17,7 +17,7 @@ const options = {
 
 export const fetchWeather = (city = "London") => {
     return async dispatch => {
-        dispatch(setLocation(city));
+        dispatch(setLocationThunk(city));
         dispatch(setWeatherInfoRequest());
         fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}&days=3`, options)
             .then(response => {

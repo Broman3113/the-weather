@@ -9,7 +9,6 @@ import GlassyBox from "../../../../Containers/GlassyBox/GlassyBox";
 import Switcher from "../../../../Containers/Switcher/Switcher";
 import {ColorModeContext} from "../../../../App";
 import {selectFavoriteCities, selectIsMetric} from "../../../../store/profile/selectors";
-import {addToFavorites, removeFromFavorites, setIsAuth, toggleMeasureType} from "../../../../store/profile/actions";
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
@@ -17,6 +16,12 @@ import dayjs from "dayjs";
 
 import "../../../../utils/i18next";
 import {useTranslation} from "react-i18next";
+import {
+    addToFavoritesThunk,
+    removeFromFavoritesThunk,
+    setIsAuthThunk,
+    toggleMeasureTypeThunk
+} from "../../../../store/profile/thunks";
 
 const styles = {
     TextField: {
@@ -47,13 +52,13 @@ const ProfileMenu = () => {
         setShowing(!isShowing);
     } , [isShowing]);
     const onToggleMeasureSystem = useCallback(() => {
-        dispatch(toggleMeasureType());
+        dispatch(toggleMeasureTypeThunk());
     } , []);
     const onAddToFavorites = useCallback(() => {
-        dispatch(addToFavorites(location));
+        dispatch(addToFavoritesThunk(location));
     } , [location]);
     const onRemoveFromFavorites = useCallback(() => {
-        dispatch(removeFromFavorites(location));
+        dispatch(removeFromFavoritesThunk(location));
     } , [location]);
     const onChangeLang = useCallback((lang) => {
         i18n.changeLanguage(lang);
@@ -64,7 +69,7 @@ const ProfileMenu = () => {
     } , [location]);
     const onLogout = useCallback(() => {
         localStorage.profile.clear;
-        dispatch(setIsAuth(false));
+        dispatch(setIsAuthThunk(false));
         navigate('../', {replace: true});
     } , []);
     const getDaysAgoDate = useCallback((days) => {
