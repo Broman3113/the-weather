@@ -113,8 +113,9 @@ const ProfileMenu = () => {
                             label={t("ProfileMenu.PickADate")}
                             value={valueDate}
                             minDate={dayjs(getDaysAgoDate(7))}
-                            maxDate={dayjs(getDaysAgoDate(1))}
+                            maxDate={dayjs(getDaysAgoDate(0))}
                             onChange={onValueDateChange}
+                            inputProps={{ readOnly: true }}
                             renderInput={(params) => <TextField sx={styles.TextField} {...params} autoComplete="off"/>}
                         />
                     </LocalizationProvider>

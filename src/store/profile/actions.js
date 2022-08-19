@@ -55,7 +55,6 @@ export const removeFromFavorites = (city) => {
 }
 
 export const addFavoriteSportEvent = (sportEvent) => {
-    console.log(sportEvent)
     return {
         type: ADD_FAVORITE_SPORT_EVENT_ACTION,
         sportEvent: {

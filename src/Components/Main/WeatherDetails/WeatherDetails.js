@@ -97,7 +97,7 @@ const WeatherDetails = () => {
                     <ul className={classes.SavedLocationsList}>
                         {favoriteCities.length ?
                             favoriteCities.map(city => <li key={city}><span onClick={() => onAnotherLocationClicked(city)}>{city}</span></li>) :
-                            <li>No favorite cities yet</li>}
+                            <li>{t("WeatherDetails.NoFavoriteCitiesYet")}</li>}
                     </ul>
                     <hr className={classes.Divider}/>
                     <h3 className={classes.WeatherDetailsTitle}>{t("WeatherDetails.WeatherDetails")}</h3>
