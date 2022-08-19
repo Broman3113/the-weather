@@ -62,7 +62,7 @@ const SportEvents = ({setSearchParams, searchParams, location}) => {
                         </div>
                     ) : null}
 
-                    <h2 className={classes.EventType}>Cricket</h2>
+                    <h2 className={classes.EventType}>{t("SportEvents.Cricket")}</h2>
                     {sportEvents.cricket.length ? sportEvents.cricket.map(event => <div key={Math.random()}
                                                                                                  className={classes.Event}>
                             <h3 className={classes.EventTitle}>{t("SportEvents.Country")}</h3>
@@ -84,7 +84,7 @@ const SportEvents = ({setSearchParams, searchParams, location}) => {
                         </div>
                     ) : null}
 
-                    <h2 className={classes.EventType}>Golf</h2>
+                    <h2 className={classes.EventType}>{t("SportEvents.Golf")}</h2>
                     {sportEvents.golf.length ? sportEvents.golf.map(event => <div key={Math.random()}
                                                                                            className={classes.Event}>
                             <h3 className={classes.EventTitle}>{t("SportEvents.Country")}</h3>

@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 import {useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 import classes from './WeatherDisplay.module.scss'
 
@@ -31,17 +31,22 @@ const WeatherDisplay = () => {
     const weatherDayToDisplay = useSelector(selectWeatherDayToDisplay);
     const isWeatherInfoLoading = useSelector(selectIsWeatherInfoLoading);
     const isMetric = useSelector(selectIsMetric);
-    const {date} = useParams();
+    const {date, location} = useParams();
     const theme = useTheme();
+    const navigate = useNavigate();
 
-    const weatherToDisplay = useMemo(() => weatherDayToDisplay ? weatherInfo.forecast?.forecastday[weatherDayToDisplay].hour || [] : [
-        ...weatherInfo.forecast?.forecastday[0].hour.slice(Number(dayjs(weatherInfo.location.localtime).format('H'))) || "",
-        ...weatherInfo.forecast?.forecastday[1].hour.slice(0, Number(dayjs(weatherInfo.location.localtime).format('H')) + 1) || ""
-    ], [weatherDayToDisplay, weatherInfo]);
+    const weatherToDisplay = useMemo(() => weatherDayToDisplay ? weatherInfo.forecast?.forecastday[weatherDayToDisplay].hour || [] :
+        [
+            ...weatherInfo.forecast?.forecastday[0].hour.slice(Number(dayjs(weatherInfo.location.localtime).format('H'))) || "",
+            ...weatherInfo.forecast?.forecastday[1].hour.slice(0, Number(dayjs(weatherInfo.location.localtime).format('H')) + 1) || ""
+        ], [weatherDayToDisplay, weatherInfo]);
 
 
     if (isWeatherInfoLoading) {
         return <div className={classes.WeatherDisplay}>Loading...</div>
+    }
+    if(date === dayjs().format('YYYY-MM-DD')) {
+        navigate('../' + location); // Check if date is today, we display default current weather
     }
     if (date) {
         return (
@@ -75,6 +80,17 @@ const WeatherDisplay = () => {
                             mousewheel={true}
                             className="mySwiper"
                             modules={[Mousewheel]}
+                            breakpoints={{
+                                0: {
+                                    slidesPerView: 3.4,
+                                },
+                                1400: {
+                                    slidesPerView: 5.4,
+                                },
+                                1600: {
+                                    slidesPerView: 6.4,
+                                },
+                            }}
                         >
                             {
                                 weatherHistoryHourDetails?.map((hourlyInfo, index) => <SwiperSlide key={index}>
