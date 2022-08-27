@@ -17,40 +17,69 @@
     grid-template-areas:  "profile star"
                           "upcomingDays upcomingDays"
                           "weatherDisplay weatherDisplay";
-    padding: 10px;
+    padding: 10px 0;
   }
 }
 
 .star {
   grid-area: star;
   text-align: right;
+
   img {
     width: 35px;
     border-radius: 50px;
     padding: 3px;
     cursor: pointer;
+
     &:hover {
       background-color: rgba(255, 255, 255, 0.5);
       transition: background-color 0.5s ease-in-out;
     }
   }
+
   &Inactive {
     img {
-      filter: grayscale(100%) brightness(40%) opacity(50%);
-      &:hover{
-        filter: grayscale(0%) brightness(60%) opacity(80%);
+      filter: grayscale(100%) brightness(80%) opacity(50%);
+
+      &:hover {
+        filter: grayscale(0%) brightness(80%) opacity(80%);
       }
     }
   }
+
   transition: filter .3s ease;
 }
 
 .light {
   color: $dark;
   transition: color .2s ease;
+
+  .star{
+    &Inactive {
+      img {
+        filter: grayscale(100%) brightness(30%) opacity(50%);
+
+        &:hover {
+          filter: grayscale(0%) brightness(80%) opacity(100%);
+        }
+      }
+    }
+  }
 }
 
 .dark {
   color: $light;
   transition: color .2s ease;
+
+  .star{
+    &Inactive {
+      img {
+        filter: grayscale(100%) brightness(80%) opacity(50%);
+
+        &:hover {
+          filter: grayscale(0%) brightness(80%) opacity(80%);
+        }
+      }
+    }
+  }
 }

@@ -12,27 +12,52 @@
       margin-top: 20px;
       padding-left: 0;
     }
+    @media (max-width: 425px) {
+      padding-left: 10px;
+      justify-content: center;
+    }
     .WeatherTemperature{
       span{
         font-size: 172px;
         line-height: 0.9em;
+      }
+
+      @media (max-width: 425px) {
+        width: 100%;
+        span {
+          font-size: 3rem;
+        }
       }
     }
     .WeatherWrapper{
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+
       .WeatherCityInfo{
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: flex-start;
+        @media (max-width: 425px) {
+          width: 100%;
+        }
         &City{
           p{
             font-size: 84px;
           }
+          @media (max-width: 425px) {
+            p {
+              font-size: 2rem;
+            }
+          }
         }
         &Date{
           font-size: 25px;
+          @media (max-width: 425px) {
+            span {
+              font-size: 1rem;
+            }
+          }
         }
       }
       .WeatherType{
@@ -69,7 +94,11 @@
     }
 
     .GlassyBox{
-      width: 79%;
+      width: 89%;
+      @media (max-width: 768px) {
+        width: 100%;
+        border-radius: 0;
+      }
       .HourlyItem{
         padding: 25px 0;
         .WeatherTime{
