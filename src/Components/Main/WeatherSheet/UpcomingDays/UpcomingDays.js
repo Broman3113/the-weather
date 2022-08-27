@@ -57,7 +57,7 @@ const UpcomingDays = () => {
         <div className={[classes.UpcomingDays, classes[theme.palette.mode]].join(' ')}>
             <GlassyBox className={classes.GlassyBox}>
                 <Swiper
-                    slidesPerView={2}
+                    slidesPerView={weatherToDisplay.forecast?.forecastday?.length < 3 ? 1 : 2}
                     spaceBetween={1}
                     grabCursor={true}
                     mousewheel={true}
@@ -65,7 +65,7 @@ const UpcomingDays = () => {
                     modules={[Mousewheel]}
                     breakpoints={{
                         409: {
-                            slidesPerView: 3,
+                            slidesPerView: weatherToDisplay.forecast?.forecastday?.length < 3 ? 1 : 3,
                         },
                     }}
                 >
