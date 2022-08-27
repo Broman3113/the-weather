@@ -8,7 +8,7 @@ import WeatherDisplay from "./WeatherDisplay/WeatherDisplay";
 import {selectFavoriteCities} from "../../../store/profile/selectors";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {removeFromFavoritesThunk} from "../../../store/profile/thunks";
+import {addToFavoritesThunk, removeFromFavoritesThunk} from "../../../store/profile/thunks";
 
 const WeatherSheet = () => {
     const theme = useTheme();
@@ -16,10 +16,12 @@ const WeatherSheet = () => {
     const {location} = useParams();
     const dispatch = useDispatch();
 
-    const onRemoveFromFavorites = useCallback((e) => {
-        e.preventDefault();
+    const onRemoveFromFavorites = useCallback(() => {
         dispatch(removeFromFavoritesThunk(location));
-    } , [location]);
+    }, [location]);
+    const onAddToFavorites = useCallback(() => {
+        dispatch(addToFavoritesThunk(location));
+    }, [location]);
 
     return (
         <div className={[classes.WeatherSheet, classes[theme.palette.mode]].join(' ')}>
@@ -27,10 +29,12 @@ const WeatherSheet = () => {
             <UpcomingDays/>
             {favoriteCities.find(city => city === location) ?
                 <div className={classes.star}>
-                    <a href="#" onClick={onRemoveFromFavorites}>
-                        <img src={star} alt="star"/>
-                    </a>
-                </div> : null}
+                    <img src={star} alt="star" onClick={onRemoveFromFavorites}/>
+                </div> :
+                <div className={[classes.star, classes.starInactive].join(" ")}>
+                    <img src={star} alt="star inactive" onClick={onAddToFavorites}/>
+                </div>
+            }
             <WeatherDisplay/>
         </div>
     );
