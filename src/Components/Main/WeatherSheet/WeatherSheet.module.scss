@@ -37,8 +37,12 @@
   &Inactive {
     img {
       filter: grayscale(100%) brightness(40%) opacity(50%);
+      &:hover{
+        filter: grayscale(0%) brightness(60%) opacity(80%);
+      }
     }
   }
+  transition: filter .3s ease;
 }
 
 .light {
