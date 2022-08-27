@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {useSelector} from "react-redux";
 import {useNavigate, useParams} from "react-router-dom";
 
@@ -35,12 +35,16 @@ const WeatherDisplay = () => {
     const theme = useTheme();
     const navigate = useNavigate();
 
+    const favicon = document.getElementById("favicon");
+
     const weatherToDisplay = useMemo(() => weatherDayToDisplay ? weatherInfo.forecast?.forecastday[weatherDayToDisplay].hour || [] :
         [
             ...weatherInfo.forecast?.forecastday[0].hour.slice(Number(dayjs(weatherInfo.location.localtime).format('H'))) || "",
             ...weatherInfo.forecast?.forecastday[1].hour.slice(0, Number(dayjs(weatherInfo.location.localtime).format('H')) + 1) || ""
         ], [weatherDayToDisplay, weatherInfo]);
-
+    useEffect(() => {
+        favicon.href = weatherInfo.current?.condition?.icon;
+    }, [weatherInfo]);
 
     if (isWeatherInfoLoading) {
         return <div className={classes.WeatherDisplay}>Loading...</div>
@@ -83,6 +87,9 @@ const WeatherDisplay = () => {
                             breakpoints={{
                                 0: {
                                     slidesPerView: 3.4,
+                                },
+                                568: {
+                                    slidesPerView: 4.4,
                                 },
                                 1400: {
                                     slidesPerView: 5.4,
@@ -150,6 +157,9 @@ const WeatherDisplay = () => {
                         breakpoints={{
                             0: {
                                 slidesPerView: 3.4,
+                            },
+                            568: {
+                                slidesPerView: 4.4,
                             },
                             1400: {
                                 slidesPerView: 5.4,

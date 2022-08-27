@@ -25,7 +25,6 @@ function App() {
     // If not we set localstorage profile to initial profile state
     // The same we do for users
 
-
     useEffect(() => {
         if (localStorage.darkMode === null) {
             localStorage.darkMode = "true";

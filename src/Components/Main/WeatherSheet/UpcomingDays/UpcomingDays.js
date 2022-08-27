@@ -19,6 +19,11 @@ import {setWeatherDayToDisplay} from "../../../../store/weather/actions";
 import dayjs from "dayjs";
 import {useTranslation} from "react-i18next";
 
+import "swiper/css";
+import "swiper/css/pagination";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Mousewheel} from "swiper";
+
 
 const UpcomingDays = () => {
 
@@ -36,7 +41,7 @@ const UpcomingDays = () => {
     const weatherToDisplay = useMemo(() => date ? weatherHistoryInfo : weatherInfo, [date, weatherHistoryInfo, weatherInfo]); // Display needed weather
     const {t} = useTranslation();
 
-    if  (weatherInfoError || weatherHistoryInfoError) {
+    if (weatherInfoError || weatherHistoryInfoError) {
         return (
             <div className={[classes.UpcomingDays, classes[theme.palette.mode]].join(' ')}>
                 <GlassyBox className={classes.GlassyBox}>
@@ -47,32 +52,47 @@ const UpcomingDays = () => {
     }
     const onDayClicked = useCallback((day, index) => {
         dispatch(setWeatherDayToDisplay(index));
-    } , []);
+    }, []);
     return (
         <div className={[classes.UpcomingDays, classes[theme.palette.mode]].join(' ')}>
             <GlassyBox className={classes.GlassyBox}>
-                {!isWeatherInfoLoading || isWeatherHistoryInfoLoading ? weatherToDisplay.forecast?.forecastday?.map((day, index) => <div
-                    key={index}
-                    className={classes.WeatherDay}
-                    onClick={() => onDayClicked(day, index)}
-                    style={{backgroundColor: weatherDayToDisplay === index && "rgba(255,255,255,0.2)"}}
+                <Swiper
+                    slidesPerView={2}
+                    spaceBetween={1}
+                    grabCursor={true}
+                    mousewheel={true}
+                    className="mySwiper"
+                    modules={[Mousewheel]}
+                    breakpoints={{
+                        409: {
+                            slidesPerView: 3,
+                        },
+                    }}
                 >
-                    <p className={classes.Date}>{dayjs(day.date).format('DD.MM')}</p>
-                    <div className={classes.WeatherIcon}>
-                        <img src={day.day.condition?.icon} alt={day.day.condition?.code}/>
-                    </div>
-                    <div className={classes.AverageTemperature}>
-                        <div>
-                            <span>{t("UpcomingDays.Min")}</span>
-                            <p>{isMetric ? Math.trunc(day.day.mintemp_c) : Math.trunc(day.day.mintemp_f)}°</p>
-                        </div>
-                        <div>
-                            <span>{t("UpcomingDays.Max")}</span>
-                            <p>{isMetric ? Math.trunc(day.day.maxtemp_c) : Math.trunc(day.day.maxtemp_f)}°</p>
-                        </div>
-                    </div>
-                </div>) || null : <p>loading</p>}
-
+                    {!isWeatherInfoLoading || isWeatherHistoryInfoLoading ? weatherToDisplay.forecast?.forecastday?.map((day, index) => <SwiperSlide key={index}>
+                            <div
+                                key={index}
+                                className={classes.WeatherDay}
+                                onClick={() => onDayClicked(day, index)}
+                                style={{backgroundColor: weatherDayToDisplay === index && "rgba(255,255,255,0.2)"}}
+                            >
+                                <p className={classes.Date}>{dayjs(day.date).format('DD.MM')}</p>
+                                <div className={classes.WeatherIcon}>
+                                    <img src={day.day.condition?.icon} alt={day.day.condition?.code}/>
+                                </div>
+                                <div className={classes.AverageTemperature}>
+                                    <div>
+                                        <span>{t("UpcomingDays.Min")}</span>
+                                        <p>{isMetric ? Math.trunc(day.day.mintemp_c) : Math.trunc(day.day.mintemp_f)}°</p>
+                                    </div>
+                                    <div>
+                                        <span>{t("UpcomingDays.Max")}</span>
+                                        <p>{isMetric ? Math.trunc(day.day.maxtemp_c) : Math.trunc(day.day.maxtemp_f)}°</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>) || null : <p>loading</p>}
+                </Swiper>
             </GlassyBox>
         </div>
     );
