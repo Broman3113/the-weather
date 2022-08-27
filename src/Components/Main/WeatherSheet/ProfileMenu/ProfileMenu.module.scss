@@ -6,13 +6,15 @@
   text-align: left;
   z-index: 5;
 
-
   .GlassyBox {
     position: absolute;
     padding: 20px 40px;
     left: 70px;
     top: 0;
-
+    @media (max-width: 768px) {
+      left: 0;
+      top: 60px;
+    }
     button {
       transition: all 0.2s ease;
       &:hover{

@@ -32,6 +32,9 @@
     @media (max-width: 768px) {
       padding: 30px 30px 50px;
     }
+    @media (max-width: 425px) {
+      padding: 30px 3px 50px;
+    }
     height: 100%;
     .SavedLocationTitle{
       padding: 69px 0 33px;
