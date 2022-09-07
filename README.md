@@ -46,6 +46,7 @@
 <h4 align="center">
     <a href="https://weatheronreact.netlify.app" target="_blank"><strong>--------Project on Netlify--------</strong></a>
 </h4>
+[go](http://stackoverflow.com){:target="_blank" rel="noopener"}
 
 ## About The Project
 <img src="project-image.png" alt="weatherPage">
