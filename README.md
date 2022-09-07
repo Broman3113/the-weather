@@ -73,6 +73,7 @@ Such as:
   * Sign Out
 * Sport Events information with chosen city
 * Debounce effect on search input to reduce user's trafic usage
+* Adaptive layout 
 
 ### API Usage List
 
