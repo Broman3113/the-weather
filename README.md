@@ -44,7 +44,7 @@
 <!-- ABOUT THE PROJECT -->
 
 <h4 align="center">
-    <a href="https://weatheronreact.netlify.app"><strong>--------Project on Netlify--------</strong></a>
+    <a href="https://weatheronreact.netlify.app" target="_blank"><strong>--------Project on Netlify--------</strong></a>
 </h4>
 
 ## About The Project
