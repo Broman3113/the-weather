@@ -48,7 +48,7 @@
 </h4>
 
 ## About The Project
-<img src="project-image.png" alt="weatherPage">
+<a href="https://weatheronreact.netlify.app"><img src="project-image.png" alt="weatherPage"></a>
 The Weather project written on React that uses the OpenWeatherMap API to get the current and history weather conditions for a city. Also includes a search feature API to find the weather for any city.
 This project uses a lot of features from the React framework and more,
 
