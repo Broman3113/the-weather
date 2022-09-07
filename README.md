@@ -49,15 +49,15 @@
 
 ## About The Project
 <img src="project-image.png" alt="weatherPage">
-A project written on React that uses the OpenWeatherMap API to get the current and history weather conditions for a city. Also includes a search feature API to find the weather for any city.
+The Weather project written on React that uses the OpenWeatherMap API to get the current and history weather conditions for a city. Also includes a search feature API to find the weather for any city.
 This project uses a lot of features from the React framework and more,
 
 Such as:
 
 * React
 * React Router
-* React MaterialUI
-* Thunk, Redux, Hooks, Context, and more 
+* React Plugins
+* Thunk, Redux, Hooks/Custom Hooks, Context, and more 
 
 ### Main features:
 * Fake authorisation that stores in LocalStore
@@ -76,6 +76,7 @@ Such as:
 * Sport Events information with chosen city
 * Debounce effect on search input to reduce user's trafic usage
 * Adaptive layout 
+* Check history weather
 
 ### API Usage List
 
