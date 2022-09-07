@@ -72,7 +72,7 @@ Such as:
   * Imperial/metric system
   * List of favorite cities (Showed on the main screen, so user can access favorite city by one click)
   * Light/Dark theme (using React Context)
-  * Change language
+  * Language
   * Sign Out
 * Sport Events information with chosen city
 * Debounce effect on search input to reduce user's trafic usage
