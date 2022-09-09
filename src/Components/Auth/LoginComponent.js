@@ -37,6 +37,15 @@ const LoginComponent = (props) => {
         e.preventDefault();
         props.setSearchParams({authType: 'register'});
     }, [])
+    const onFakeLogIn = (e) => {
+        e.preventDefault();
+        setModalModalMessage("All good!");
+        toggle();
+        dispatch(setUserInfoThunk(users[0]));
+        setTimeout(() => {
+            dispatch(setIsAuthThunk(true));
+        }, 1500)
+    }
 
     const onSubmitClicked = useCallback(() => {
         const userState = users.filter(user => user.email === email.value)[0] || "";
@@ -96,6 +105,7 @@ const LoginComponent = (props) => {
                 >Submit</Button>
                 <br/>
                 <br/>
+                <a href="#" onClick={onFakeLogIn}>Log in without register</a>
                 {/*<Button onClick={() => console.log(users)}>Get users</Button>*/}
             </GlassyBox>
 
