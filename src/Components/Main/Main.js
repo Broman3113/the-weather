@@ -30,7 +30,10 @@ const Main = () => {
     }, [])
 
     useEffect(() => {
-        if (dayjs(date) < dayjs(getDaysAgoDate(0))) {
+        if (dayjs(date) < dayjs(getDaysAgoDate(7))) {
+            alert(`You can't see weather for dates before ${dayjs(getDaysAgoDate(7)).format('YYYY-MM-DD')}`);
+            navigate(`/${location}/${dayjs(getDaysAgoDate(7)).format('YYYY-MM-DD')}`);
+        }else if (dayjs(date) < dayjs(getDaysAgoDate(0))) {
             dispatch(fetchWeatherHistory(location, dayjs(date).format('YYYY-MM-DD')));
         }
     }, [date])
